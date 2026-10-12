@@ -77,8 +77,9 @@ const gridHtml = `<div class="pg">${show.map((p, i) => `<article class="pc" data
 <div class="pc__b"><p class="pc__g">${esc(p.gname)}</p><h3>${esc(p.name)}</h3><p class="pc__d">${esc(p.desc)}</p>
 <ul>${p.features.slice(0, 2).map((f) => `<li>${svg('tick', 12)}${esc(f)}</li>`).join('')}</ul>
 <div class="pc__cta"><a class="pc__q" href="#quote" data-enq="${i}">Get Quote ${svg('arrow', 14)}</a><a class="lnk" href="${p.url}" target="_blank" rel="noopener">Details ↗</a></div></div></article>`).join('')}</div>`;
+const LD = { '@context': 'https://schema.org', '@type': 'HomeAndConstructionBusiness', name: 'V-Tech Building Systems Pvt. Ltd', url: 'https://vtechwindows.com/', telephone: ['+919740422863', '+919980111468'], email: EMAIL, address: { '@type': 'PostalAddress', streetAddress: 'No. 693, M.N.S Arcade, 3rd Floor, Dr. Rajkumar Rd, 6th Block, Rajajinagar', addressLocality: 'Bengaluru', addressRegion: 'Karnataka', postalCode: '560010', addressCountry: 'IN' }, openingHours: 'Mo-Su 09:00-21:00' };
 const css = `
-:root{--ink:#0f1620;--ink2:#4b5667;--ink3:#8593a6;--line:#e6e2d8;--paper:#faf6ee;--paper2:#f4eee1;--brand:#0e4b8c;--brand-ink:#07172b;--brand-soft:#e8f0f9;--acc:#e85a1a;--acc-d:#c14710;--acc-s:#fde6d8;--ok:#1f7a4d;
+:root{--ink:#0f1620;--ink2:#4b5667;--ink3:#5a6678;--line:#e6e2d8;--paper:#faf6ee;--paper2:#f4eee1;--brand:#0e4b8c;--brand-ink:#07172b;--brand-soft:#e8f0f9;--acc:#bf4509;--acc-d:#a63a06;--acc-s:#fde6d8;--ok:#1f7a4d;
 --r:14px;--sh:0 8px 24px -10px rgba(15,22,32,.18),0 2px 6px rgba(15,22,32,.05);--shl:0 24px 60px -20px rgba(14,44,78,.35),0 8px 20px -8px rgba(15,22,32,.12);
 --serif:"Fraunces","Times New Roman",serif;--sans:"Manrope",system-ui,sans-serif;--e:cubic-bezier(.2,.8,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}html,body{overflow-x:clip}
@@ -93,7 +94,7 @@ h1 em,h2 em{font-style:italic;color:var(--brand)}
 .head h2{font-size:clamp(30px,4.2vw,50px);line-height:1.08;margin-bottom:14px}.head p{color:var(--ink2);font-size:16.5px}
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 24px;border-radius:999px;font:700 15px var(--sans);overflow:hidden;transition:transform .3s var(--e),box-shadow .3s,background .3s,color .3s}
 .btn:after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s}.btn:hover:after{transform:translateX(120%)}
-.btn--o{background:var(--acc);color:#fff;box-shadow:0 12px 26px -12px rgba(232,90,26,.75)}.btn--o:hover{background:var(--acc-d);transform:translateY(-2px)}
+.btn--o{background:var(--acc);color:#fff;box-shadow:0 12px 26px -12px rgba(191,69,9,.75)}.btn--o:hover{background:var(--acc-d);transform:translateY(-2px)}
 .btn--g{background:#fff;border:1.5px solid var(--line);color:var(--brand-ink)}.btn--g:hover{border-color:var(--brand);transform:translateY(-2px)}
 .btn--d{background:var(--brand-ink);color:#fff}.btn--lg{min-height:56px;padding:0 30px;font-size:16px}.btn--b{width:100%}
 .prog{position:fixed;inset:0 0 auto;height:3px;z-index:80;background:linear-gradient(90deg,var(--acc),var(--brand));transform-origin:0;transform:scaleX(var(--p,0))}
@@ -145,7 +146,7 @@ h1 em,h2 em{font-style:italic;color:var(--brand)}
 .why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .ben{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;overflow:hidden;transition:transform .35s var(--e),box-shadow .35s,border-color .35s}
 .ben:hover{transform:translateY(-6px);box-shadow:var(--shl);border-color:transparent}
-.ben:after{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--sx,50%) var(--sy,50%),rgba(232,90,26,.1),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}.ben:hover:after{opacity:1}
+.ben:after{content:"";position:absolute;inset:0;background:radial-gradient(240px circle at var(--sx,50%) var(--sy,50%),rgba(191,69,9,.1),transparent 60%);opacity:0;transition:opacity .3s;pointer-events:none}.ben:hover:after{opacity:1}
 .ben .ic{display:grid;place-items:center;width:54px;height:54px;border-radius:14px;background:var(--brand-soft);color:var(--brand);transition:transform .5s var(--e),background .3s,color .3s}.ben:hover .ic{transform:rotate(-8deg) scale(1.08);background:var(--brand);color:#fff}
 .ben .no{position:absolute;top:22px;right:24px;font:600 28px var(--serif);color:var(--line)}.ben h3{font-size:21px;margin:18px 0 8px}.ben p{color:var(--ink2);font-size:14.5px}
 /* finishes */
@@ -193,15 +194,16 @@ h1 em,h2 em{font-style:italic;color:var(--brand)}
 .faq details p{padding:0 24px 22px;color:var(--ink2);animation:fu .45s var(--e)}@keyframes fu{from{opacity:0;transform:translateY(-6px)}}
 /* final cta */
 .fin2{background:linear-gradient(135deg,var(--brand-ink),#0b2e57);color:#fff;position:relative;overflow:hidden}
-.fin2:before{content:"";position:absolute;width:620px;height:620px;right:-200px;top:-260px;border-radius:50%;background:radial-gradient(rgba(232,90,26,.35),transparent 65%);animation:fl 9s ease-in-out infinite}@keyframes fl{50%{transform:translate(-60px,50px)}}
+.fin2:before{content:"";position:absolute;width:620px;height:620px;right:-200px;top:-260px;border-radius:50%;background:radial-gradient(rgba(191,69,9,.35),transparent 65%);animation:fl 9s ease-in-out infinite}@keyframes fl{50%{transform:translate(-60px,50px)}}
 .fin2 .ct{position:relative;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:28px;align-items:start}.fin2 h2{color:#fff;font-size:clamp(32px,4vw,48px);line-height:1.08}.fin2 h2 em{color:#ff9a62}.fin2 p{color:rgba(255,255,255,.75);margin:14px 0 24px}
 .loc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:24px;transition:transform .4s var(--e),background .3s}.loc:hover{transform:translateY(-4px);background:rgba(255,255,255,.09)}
 .loc h3{color:#fff;font-size:22px}.loc small{display:block;color:#ff9a62;font-weight:700;margin-bottom:14px}.cl{display:flex;gap:12px;margin-top:12px;font-size:14px}.cl i{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.08);color:#ff9a62}.cl span{display:block;font-size:11.5px;color:rgba(255,255,255,.55)}
 .foot{background:#050f1c;color:rgba(255,255,255,.6);font-size:13px;padding:24px 0}.foot .ct{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}.foot a{color:#fff}
 .mbar{display:none}
 /* cursor glow */
-.glow{position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;background:radial-gradient(rgba(232,90,26,.09),transparent 65%);pointer-events:none;z-index:1;transform:translate(var(--gx,-600px),var(--gy,-600px))}
+.glow{position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;background:radial-gradient(rgba(191,69,9,.09),transparent 65%);pointer-events:none;z-index:1;transform:translate(var(--gx,-600px),var(--gy,-600px))}
 /* responsive */
+.pc__q,.lnk{min-height:44px;display:inline-flex;align-items:center}.foot a{display:inline-block;padding:11px 2px}.top a{min-height:36px}
 @media(max-width:1100px){.nav{display:none}.fin2 .ct{grid-template-columns:1fr 1fr}.fin2 .ct>div:first-child{grid-column:1/-1}}
 @media(max-width:900px){.pg{grid-template-columns:1fr 1fr}.hero__g{grid-template-columns:1fr}.why,.gal{grid-template-columns:1fr 1fr}.fin{grid-template-columns:1fr 1fr}.stats .ct{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr;row-gap:34px}.steps:before,.steps:after{display:none}.pill .lab{display:none}}
 @media(max-width:760px){.top__r,.top .em{display:none}.hdr .ct{height:62px}.brand small{display:none}.hdr .btn{display:none}.pill{margin-left:auto}
@@ -255,7 +257,7 @@ const tabCount = (c) => (c === 'all' ? show.length : show.filter((p) => p.cat ==
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>V-Tech uPVC Windows &amp; Doors Bangalore | Free Site Consultation</title>
 <meta name="description" content="V-Tech Building Systems: uPVC windows and doors made in Bengaluru. 20+ years of experience, 1 Lakh+ happy customers. Book a free site consultation.">
-<meta name="theme-color" content="#07172b"><link rel="icon" href="${LOGO}">
+<meta name="theme-color" content="#07172b"><meta property="og:type" content="website"><meta property="og:title" content="V-Tech uPVC Windows &amp; Doors, Bangalore"><meta property="og:description" content="uPVC casement, sliding and French windows and doors made in Bengaluru. Book a free site consultation."><meta property="og:image" content="https://vtech-upvc-lite.vercel.app/img2/hero-feature.webp"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://vtech-upvc-lite.vercel.app/"><script type="application/ld+json">${JSON.stringify(LD)}</script><link rel="icon" href="${LOGO}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="${w('prod-inward-outward')}">
