@@ -81,13 +81,13 @@ const LD = { '@context': 'https://schema.org', '@type': 'HomeAndConstructionBusi
 const css = `
 :root{--ink:#2B161B;--dark:#0E0F12;--ink2:#4B4F58;--ink3:#4B4F58;--line:#E4DFE2;--paper:#F7F3F5;--paper2:#F4F4F4;--brand:#02409A;--brand-ink:#2B161B;--brand-soft:#E6EEF8;--acc:#D90700;--acc-d:#B30600;--acc-s:#FDE8E7;--ok:#1f7a4d;
 --r:14px;--sh:0 8px 24px -10px rgba(15,22,32,.18),0 2px 6px rgba(15,22,32,.05);--shl:0 24px 60px -20px rgba(14,44,78,.35),0 8px 20px -8px rgba(15,22,32,.12);
---serif:"Fraunces","Times New Roman",serif;--sans:"Manrope",system-ui,sans-serif;--e:cubic-bezier(.2,.8,.2,1)}
+--serif:Verdana,Geneva,sans-serif;--sans:Verdana,Geneva,sans-serif;--e:cubic-bezier(.2,.8,.2,1)}
 *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}html,body{overflow-x:clip}
 body{font:16px/1.55 var(--sans);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{display:block;max-width:100%;height:auto}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}ul,ol{list-style:none}
 :focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;color:var(--brand-ink);text-wrap:balance}
-h1 em,h2 em{font-style:italic;color:var(--brand)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;letter-spacing:-.02em;color:var(--brand-ink);text-wrap:balance}
+h1 em,h2 em{font-style:normal;color:var(--brand)}
 .ct{width:100%;max-width:1240px;margin:0 auto;padding:0 24px}
 .sec{padding:clamp(64px,9vw,110px) 0}
 .head{text-align:center;max-width:720px;margin:0 auto 44px}.eb{display:inline-block;font:800 11.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
@@ -204,6 +204,13 @@ h1 em,h2 em{font-style:italic;color:var(--brand)}
 .glow{position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;background:radial-gradient(rgba(217,7,0,.09),transparent 65%);pointer-events:none;z-index:1;transform:translate(var(--gx,-600px),var(--gy,-600px))}
 /* responsive */
 .pc__q,.lnk{min-height:44px;display:inline-flex;align-items:center}.foot a{display:inline-block;padding:11px 2px}.top a{min-height:36px}
+/* main-site typography: Verdana throughout (windows from vtechwindows.com), sizes tuned for its wider letterforms */
+body{font-size:15px;color:#453E3E}h1,h2,h3,h4{color:#2B161B}
+.hero h1{font-size:clamp(30px,4.4vw,54px);line-height:1.12}.head h2,.fin2 h2{font-size:clamp(26px,3.4vw,40px);line-height:1.15}.pc h3{font-size:19px}.faq summary{font:700 16px var(--sans)}
+.stat .n,.pc__no,.step .ic,.ben .no{font-family:var(--sans)}.stat .n{font-size:clamp(28px,3.4vw,40px)}.pc__no{font-size:36px}.brand b{font:700 18px/1 var(--sans)}
+.nav{font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:700}.nav a{color:#02409A}.nav a:hover{color:#2B161B}
+.kin__t{font-size:clamp(30px,5vw,64px);font-weight:700}.loc h3{font-size:20px}.ben h3{font-size:18px}.step h4{font-size:17px}
+@media(max-width:560px){.hero h1{font-size:28px}.head h2,.fin2 h2{font-size:24px}}
 @media(max-width:1100px){.nav{display:none}.fin2 .ct{grid-template-columns:1fr 1fr}.fin2 .ct>div:first-child{grid-column:1/-1}}
 @media(max-width:900px){.pg{grid-template-columns:1fr 1fr}.hero__g{grid-template-columns:1fr}.why,.gal{grid-template-columns:1fr 1fr}.fin{grid-template-columns:1fr 1fr}.stats .ct{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr;row-gap:34px}.steps:before,.steps:after{display:none}.pill .lab{display:none}}
 @media(max-width:760px){.top__r,.top .em{display:none}.hdr .ct{height:62px}.brand small{display:none}.hdr .btn{display:none}.pill{margin-left:auto}
@@ -258,8 +265,7 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 <title>V-Tech uPVC Windows &amp; Doors Bangalore | Free Site Consultation</title>
 <meta name="description" content="V-Tech Building Systems: uPVC windows and doors made in Bengaluru. 20+ years of experience, 1 Lakh+ happy customers. Book a free site consultation.">
 <meta name="theme-color" content="#02409A"><meta property="og:type" content="website"><meta property="og:title" content="V-Tech uPVC Windows &amp; Doors, Bangalore"><meta property="og:description" content="uPVC casement, sliding and French windows and doors made in Bengaluru. Book a free site consultation."><meta property="og:image" content="https://vtech-upvc-lite.vercel.app/img2/hero-feature.webp"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://vtech-upvc-lite.vercel.app/"><script type="application/ld+json">${JSON.stringify(LD)}</script><link rel="icon" href="${LOGO}">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+
 <link rel="preload" as="image" href="${w('prod-inward-outward')}">
 <style>${min(css + REV.css)}</style></head><body>
 <div class="prog" aria-hidden="true"></div><div class="glow" aria-hidden="true"></div>
