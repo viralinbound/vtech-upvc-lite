@@ -26,7 +26,7 @@ const catOf = (g) => (g === 'casement' ? 'casement' : g === 'sliding' ? 'sliding
 const CLIENTS = [1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21].map((n) => I + 'Picture' + n + '.webp').concat(w('logo-dayananda-college'));
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const pad = (i) => String(i).padStart(2, '0');
-const LOGO = w('vtech-logo');
+const LOGO = I + 'vtech-icon.svg';
 const P1 = '+91 97404 22863', P2 = '+91 99801 11468', EMAIL = 'vtechbuildingsystems@gmail.com';
 const tel = (p) => 'tel:' + p.replace(/\s/g, '');
 
@@ -105,7 +105,7 @@ h1 em,h2 em{font-style:normal;color:var(--brand)}
 @keyframes pul{50%{box-shadow:0 0 0 7px rgba(110,193,228,0)}}
 .hdr{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
 .hdr:after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:4px;background:linear-gradient(90deg,#02409A,#6EC1E4)}.hdr.sh{box-shadow:0 10px 30px -18px rgba(15,22,32,.35)}
-.hdr .ct{display:flex;align-items:center;gap:24px;height:72px}.brand{display:flex;align-items:center;gap:10px}.brand img{width:44px;height:44px;border-radius:8px}
+.hdr .ct{display:flex;align-items:center;gap:24px;height:72px}.brand{display:flex;align-items:center;gap:10px}.brand img{width:44px;height:44px;border-radius:0;background:none}
 .brand b{display:block;font:700 20px/1 var(--serif);color:var(--brand-ink)}.brand small{display:block;font-size:11px;color:var(--ink2);margin-top:3px}
 .nav{display:flex;gap:26px;margin-left:auto;font-weight:600;font-size:14.5px;color:var(--ink2)}.nav a{position:relative}.nav a:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--acc);transform:scaleX(0);transition:transform .3s var(--e)}.nav a:hover{color:var(--brand-ink)}.nav a:hover:after{transform:scaleX(1)}
 .pill{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:var(--brand-ink)}.pill i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--acc-s);color:var(--acc)}.pill small{display:block;font-size:11px;font-weight:500;color:var(--ink2)}
@@ -264,7 +264,7 @@ const tabCount = (c) => (c === 'all' ? show.length : show.filter((p) => p.cat ==
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>V-Tech uPVC Windows &amp; Doors Bangalore | Free Site Consultation</title>
 <meta name="description" content="V-Tech Building Systems: uPVC windows and doors made in Bengaluru. 20+ years of experience, 1 Lakh+ happy customers. Book a free site consultation.">
-<meta name="theme-color" content="#02409A"><meta property="og:type" content="website"><meta property="og:title" content="V-Tech uPVC Windows &amp; Doors, Bangalore"><meta property="og:description" content="uPVC casement, sliding and French windows and doors made in Bengaluru. Book a free site consultation."><meta property="og:image" content="https://vtech-upvc-lite.vercel.app/img2/hero-feature.webp"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://vtech-upvc-lite.vercel.app/"><script type="application/ld+json">${JSON.stringify(LD)}</script><link rel="icon" href="${LOGO}">
+<meta name="theme-color" content="#02409A"><meta property="og:type" content="website"><meta property="og:title" content="V-Tech uPVC Windows &amp; Doors, Bangalore"><meta property="og:description" content="uPVC casement, sliding and French windows and doors made in Bengaluru. Book a free site consultation."><meta property="og:image" content="https://vtech-upvc-lite.vercel.app/img2/hero-feature.webp"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://vtech-upvc-lite.vercel.app/"><script type="application/ld+json">${JSON.stringify(LD)}</script><link rel="icon" type="image/svg+xml" href="${LOGO}"><link rel="icon" type="image/png" sizes="32x32" href="${I}vtech-icon-32.png"><link rel="apple-touch-icon" href="${I}vtech-icon-180.png">
 
 <link rel="preload" as="image" href="${w('prod-inward-outward')}">
 <style>${min(css + REV.css)}</style></head><body>
