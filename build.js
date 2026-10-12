@@ -5,6 +5,7 @@
 const fs = require('fs');
 const path = require('path');
 const { PRODUCTS, GROUPS } = require('./data.js');
+const REV = { html: require('./reviews-section.js')({ formHref: '#quote' }), css: fs.readFileSync(path.join(__dirname, 'reviews-section.css'), 'utf8'), js: fs.readFileSync(path.join(__dirname, 'reviews-section.client.js'), 'utf8') };
 
 const A = 'img2/', I = 'img/';
 const w = (n) => A + n + '.webp';
@@ -258,11 +259,11 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="${w('prod-inward-outward')}">
-<style>${min(css)}</style></head><body>
+<style>${min(css + REV.css)}</style></head><body>
 <div class="prog" aria-hidden="true"></div><div class="glow" aria-hidden="true"></div>
 <div class="top"><div class="ct"><div class="top__l"><span><i class="dot"></i>Always open · 24/7</span><a href="${tel(P1)}">${svg('phone', 14)} ${P1}</a><a class="em" href="mailto:${EMAIL}">${svg('mail', 14)} ${EMAIL}</a></div><div class="top__r">Showroom: Rajajinagar, Bangalore</div></div></div>
 <header class="hdr"><div class="ct"><a class="brand" href="#top"><img src="${LOGO}" alt="" width="44" height="44"><span><b>V-TECH</b><small>Building Systems Pvt. Ltd</small></span></a>
-<nav class="nav" aria-label="Sections"><a href="#products">Products</a><a href="#why">Why uPVC</a><a href="#process">Process</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></nav>
+<nav class="nav" aria-label="Sections"><a href="#products">Products</a><a href="#why">Why uPVC</a><a href="#process">Process</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
 <a class="pill" href="${tel(P1)}"><i>${svg('phone', 16)}</i><span class="lab"><small>Talk to expert</small>${P1}</span></a><a class="btn btn--o" href="#quote">Get Free Quote</a></div></header>
 <main id="top">
 <section class="hero"><div class="ct hero__g"><div>
@@ -305,6 +306,8 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 <div class="mq"><div>${[...CLIENTS.slice(0, 10), ...CLIENTS.slice(0, 10)].map((c, i) => `<span><img src="${c}" alt="${i < 10 ? 'Client logo' : ''}" loading="lazy" width="140" height="60"></span>`).join('')}</div></div>
 <div class="mq mq--r"><div>${[...CLIENTS.slice(10), ...CLIENTS.slice(10)].map((c, i) => `<span><img src="${c}" alt="${i < CLIENTS.length - 10 ? 'Client logo' : ''}" loading="lazy" width="140" height="60"></span>`).join('')}</div></div></section>
 
+${REV.html}
+
 <section class="sec" id="faq" style="padding-top:20px"><div class="ct"><div class="head"><span class="eb">FAQ</span><h2 class="h2w">Everything you wanted to <em>ask about uPVC</em></h2></div>
 <div class="faq">${FAQ.map(([q, a], i) => `<details class="rv"${i === 0 ? ' open' : ''}><summary>${q}<i aria-hidden="true">+</i></summary><p>${a}</p></details>`).join('')}</div>
 <p class="note">*Warranty and figures as stated on vtechwindows.com and windows.vtechwindows.com. Please confirm terms with VTech.</p></div></section>
@@ -316,7 +319,8 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 </main>
 <footer class="foot"><div class="ct"><span>© V-Tech Building Systems Pvt. Ltd · Bengaluru</span><span>Details &amp; images: <a href="https://vtechwindows.com/" target="_blank" rel="noopener">vtechwindows.com</a> · <a href="https://windows.vtechwindows.com/" target="_blank" rel="noopener">windows.vtechwindows.com</a></span></div></footer>
 <div class="mbar"><a class="btn btn--d" href="${tel(P1)}">${svg('phone', 16)} Call Now</a><a class="btn btn--o" href="#quote">Free Quote ${svg('arrow', 16)}</a></div>
-<script>${minJs(js)}</script></body></html>`;
+<script>${minJs(js)}
+${REV.js}</script></body></html>`;
 
 fs.writeFileSync(path.join(__dirname, 'index.html'), html);
 console.log('index.html', (html.length / 1024).toFixed(1) + ' KB');
