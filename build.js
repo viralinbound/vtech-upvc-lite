@@ -64,7 +64,6 @@ const GAL = [['gallery-1', 'Casement + Fixed', 'Modern home exterior'], ['galler
 const STEPS = [['s1', 'Book free visit', 'Share your details. An expert visits at a time that suits you.'], ['s2', 'Site measurement', 'Accurate measurement and design recommendations for every opening.'], ['s3', 'Custom manufacturing', 'Made in VTech’s Bengaluru factory with European-grade profiles.'], ['s4', 'Installation & warranty', 'Clean installation by VTech’s own team, backed by a manufacturer warranty.']];
 const FAQ = [
   ['How long does the entire process take?', 'VTech states the typical timeline from first site visit to final installation is 18–21 days, covering measurement, design approval, custom manufacturing in its Bengaluru factory, and installation.'],
-  ['Are uPVC windows costlier than aluminium?', 'VTech says uPVC costs about 10–20% more than aluminium on day one, but lower energy bills, zero maintenance and a longer lifespan make it cheaper over 15 years.'],
   ['What warranty do you provide?', 'windows.vtechwindows.com lists a 20-year manufacturer warranty on the uPVC profile, hardware, gaskets and reinforcement; glass and mosquito mesh are not covered. Please confirm the exact terms with VTech when you get your quote.'],
   ['Can I see the products before deciding?', 'Yes. Visit the showroom at M.N.S Arcade, Dr. Rajkumar Road, 6th Block, Rajajinagar, Bangalore. VTech also offers tours of its manufacturing facility at Kalenahalli.'],
   ['Do you remove the old windows?', 'Yes. VTech’s installation team removes existing windows, clears the debris and installs the new ones, with no separate contractor needed.'],
@@ -301,7 +300,7 @@ let html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta nam
 
 <section class="stats" aria-label="Figures as stated by VTech"><div class="ct">${[['1', ' Lakh+', 'Happy customers'], ['200', '+', 'Projects completed'], ['20', '+', 'Years of experience'], ['5', '+', 'Quality certifications']].map(([n, s, l]) => `<div class="stat rv"><div class="n"><em data-c="${n}">${n}</em>${s}</div><div class="l">${l}</div></div>`).join('')}</div></section>
 
-<section class="sec" id="why"><div class="ct"><div class="head"><span class="eb">Why choose uPVC</span><h2 class="h2w">Six reasons families switch to <em>V-Tech uPVC</em></h2><p class="rv">Wooden frames warp. Aluminium conducts heat. uPVC does neither.</p></div>
+<section class="sec" id="why"><div class="ct"><div class="head"><span class="eb">Why choose uPVC</span><h2 class="h2w">Six reasons families switch to <em>V-Tech uPVC</em></h2><p class="rv">Wooden frames warp. uPVC does not.</p></div>
 <div class="why">${WHY.map(([k, t, d], i) => `<div class="ben rv" style="--d:${(i % 3) * 100}"><div class="ic">${svg(k, 26)}</div><span class="no">${pad(i + 1)}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</div></div></section>
 
 <section class="sec" style="padding-top:0"><div class="ct"><div class="head"><span class="eb">Finishes</span><h2 class="h2w">Choose a finish that <em>fits your home</em></h2><p class="rv">Foil-laminated finishes that won’t fade, peel or need repainting.</p></div>
