@@ -181,6 +181,14 @@ h1 em,h2 em{font-style:normal;color:var(--brand)}
 .proc{background:#fff}.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .steps:before{content:"";position:absolute;left:12%;right:12%;top:34px;height:2px;background:var(--line)}.steps:after{content:"";position:absolute;left:12%;right:12%;top:34px;height:2px;background:linear-gradient(90deg,var(--acc),var(--brand));transform-origin:0;transform:scaleX(var(--sp,0));transition:transform .2s linear}
 .step{position:relative;z-index:1;text-align:center}.step .ic{display:grid;place-items:center;width:68px;height:68px;margin:0 auto 16px;border-radius:50%;background:#fff;border:2px solid var(--line);color:var(--brand);transition:all .5s var(--e)}.step.on .ic{background:var(--brand);border-color:var(--brand);color:#fff;transform:scale(1.08)}
+.steps:after{transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.step{opacity:.5;transition:opacity .5s,transform .6s var(--e)}.step.on{opacity:1}
+.step .ic{position:relative}.step .ic svg{transition:transform .6s var(--e)}.step.on .ic svg{transform:scale(1.1) rotate(0)}
+.step.cur{transform:translateY(-6px)}.step.cur .ic{transform:scale(1.16);box-shadow:0 14px 30px -10px rgba(2,64,154,.7)}
+.step.cur .ic:after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--brand);animation:stRing 1.7s ease-out infinite}
+@keyframes stRing{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+.step h4{transition:color .4s}.step.on h4{color:var(--brand)}
+@media(prefers-reduced-motion:reduce){.step.cur .ic:after{animation:none}}
 .step small{font:800 11px var(--sans);letter-spacing:.16em;color:var(--acc)}.step h4{font-size:20px;margin:4px 0 6px}.step p{font-size:14px;color:var(--ink2);max-width:240px;margin:0 auto}
 /* clients */
 .mq{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}.mq+.mq{margin-top:14px}
@@ -247,7 +255,7 @@ if(fine&&!rm)pcs.forEach(c=>{c.addEventListener('pointermove',e=>{const r=c.getB
 /* scroll-driven bits in one rAF */
 const pr=$('.prog'),hd=$('.hdr'),mb=$('.mbar'),stp=$('.steps'),stps=$$('.step'),kts=$$('.kin__t');let tk=0,vel=0,ly=scrollY,kx=0,lt=performance.now();
 const onS=()=>{tk=0;const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;pr.style.setProperty('--p',(y/h).toFixed(4));hd.classList.toggle('sh',y>8);mb&&mb.classList.toggle('on',y>innerHeight*.7);
-const r=stp.getBoundingClientRect(),k=Math.min(1,Math.max(0,(innerHeight*.8-r.top)/(r.height+innerHeight*.2)));stp.style.setProperty('--sp',k.toFixed(3));stps.forEach((s,i)=>s.classList.toggle('on',k>=(i+.2)/stps.length))};
+const r=stp.getBoundingClientRect(),k=Math.min(1,Math.max(0,(innerHeight*.82-r.top)/(innerHeight*.42)));stp.style.setProperty('--sp',k.toFixed(3));let c=-1;stps.forEach((s,i)=>{const on=k>=i/(stps.length-1)-.03&&k>0;s.classList.toggle('on',on);if(on)c=i});stps.forEach((s,i)=>s.classList.toggle('cur',i===c))};
 addEventListener('scroll',()=>{if(!tk)tk=requestAnimationFrame(onS)},{passive:true});addEventListener('resize',onS);onS();
 if(!rm){const kin=$('.kin');let kv=false;new IntersectionObserver(([e])=>{kv=e.isIntersecting},{rootMargin:'100px'}).observe(kin);
 (function loop(t){const dt=Math.min(.05,(t-lt)/1000);lt=t;const y=scrollY;vel=vel*.9+(y-ly)*.1;ly=y;if(kv){kx+=dt*55+Math.min(25,Math.abs(vel)*.5);kts.forEach((k,i)=>{const w=k.scrollWidth/4;k.style.transform='translate3d('+(i?(kx*.7%w)-w:-(kx%w))+'px,0,0)'})}requestAnimationFrame(loop)})(lt)}
