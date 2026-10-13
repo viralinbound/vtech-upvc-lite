@@ -104,7 +104,7 @@ h1 em,h2 em{font-style:normal;color:var(--brand)}
 @keyframes pul{50%{box-shadow:0 0 0 7px rgba(110,193,228,0)}}
 .hdr{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
 .hdr:after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:4px;background:linear-gradient(90deg,#02409A,#6EC1E4)}.hdr.sh{box-shadow:0 10px 30px -18px rgba(15,22,32,.35)}
-.hdr .ct{display:flex;align-items:center;gap:24px;height:72px}.brand{display:flex;align-items:center;gap:10px}.brand img{width:44px;height:44px;border-radius:0;background:none}
+.hdr .ct{display:flex;align-items:center;gap:24px;height:72px}.brand{display:flex;align-items:center;gap:10px}.brand img{background:#fff;border-radius:8px;padding:3px;object-fit:contain;width:44px;height:44px;border-radius:0;background:none}
 .brand b{display:block;font:700 20px/1 var(--serif);color:var(--brand-ink)}.brand small{display:block;font-size:11px;color:var(--ink2);margin-top:3px}
 .nav{display:flex;gap:26px;margin-left:auto;font-weight:600;font-size:14.5px;color:var(--ink2)}.nav a{position:relative}.nav a:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--acc);transform:scaleX(0);transition:transform .3s var(--e)}.nav a:hover{color:var(--brand-ink)}.nav a:hover:after{transform:scaleX(1)}
 .pill{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14px;color:var(--brand-ink)}.pill i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--acc-s);color:var(--acc)}.pill small{display:block;font-size:11px;font-weight:500;color:var(--ink2)}
@@ -337,6 +337,6 @@ ${REV.html}
 <script>${minJs(js)}
 ${REV.js}</script></body></html>`;
 
-html = html.replace(/((?:assets\/(?:img|v2)|img2?)\/[^"' )?]+\.(?:webp|png|jpe?g|svg))/g, '$1?v=3');
+html = html.replace(/((?:assets\/(?:img|v2)|img2?)\/[^"' )?]+\.(?:webp|png|jpe?g|svg))/g, '$1?v=4');
 fs.writeFileSync(path.join(__dirname, 'index.html'), html);
 console.log('index.html', (html.length / 1024).toFixed(1) + ' KB');
