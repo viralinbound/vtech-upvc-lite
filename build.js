@@ -261,7 +261,7 @@ const minJs = (s) => s.split('\n').map((l) => l.trim()).filter(Boolean).join('\n
 const words = (s) => s; // headings are split client-side
 const tabCount = (c) => (c === 'all' ? show.length : show.filter((p) => p.cat === c).length);
 
-const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+let html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>V-Tech uPVC Windows &amp; Doors Bangalore | Free Site Consultation</title>
 <meta name="description" content="V-Tech Building Systems: uPVC windows and doors made in Bengaluru. 20+ years of experience, 1 Lakh+ happy customers. Book a free site consultation.">
 <meta name="theme-color" content="#02409A"><meta property="og:type" content="website"><meta property="og:title" content="V-Tech uPVC Windows &amp; Doors, Bangalore"><meta property="og:description" content="uPVC casement, sliding and French windows and doors made in Bengaluru. Book a free site consultation."><meta property="og:image" content="https://vtech-upvc-lite.vercel.app/img2/hero-feature.webp"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://vtech-upvc-lite.vercel.app/"><script type="application/ld+json">${JSON.stringify(LD)}</script><link rel="icon" type="image/svg+xml" href="${LOGO}"><link rel="icon" type="image/png" sizes="32x32" href="${I}vtech-icon-32.png"><link rel="apple-touch-icon" href="${I}vtech-icon-180.png">
@@ -330,5 +330,6 @@ ${REV.html}
 <script>${minJs(js)}
 ${REV.js}</script></body></html>`;
 
+html = html.replace(/((?:assets\/(?:img|v2)|img2?)\/[^"' )?]+\.(?:webp|png|jpe?g|svg))/g, '$1?v=3');
 fs.writeFileSync(path.join(__dirname, 'index.html'), html);
 console.log('index.html', (html.length / 1024).toFixed(1) + ' KB');
